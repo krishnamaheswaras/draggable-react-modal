@@ -1,0 +1,40 @@
+.HelpModalInsideContent {
+  cursor: move;
+}
+
+.innerContent {
+  padding: 24px 32px;
+}
+
+.customIcon {
+  position: relative;
+  top: 0.2rem;
+  margin-left: 0.8rem;
+}
+
+.HelpModalContent {
+  top: 136px;
+  right: 24px;
+  box-shadow: #ccc;
+}
+
+.HelpModalOverlay {
+  background: transparent;
+}
+
+.footer {
+  padding: 24px;
+  text-align: right;
+  background-color: #fff;
+}
+
+.footer > * {
+  margin: 0;
+}
+
+.title {
+  padding-top: 24px;
+  padding-left: 32px;
+  margin: 0;
+  font-size:210px;
+}

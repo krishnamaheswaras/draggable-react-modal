@@ -1,0 +1,68 @@
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+  -webkit-transition: opacity 200ms ease-in-out;
+  -moz-transition: opacity 200ms ease-in-out;
+  -ms-transition: opacity 200ms ease-in-out;
+  -o-transition: opacity 200ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
+}
+  
+.ReactModal__InsideContent {
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: .3rem;
+  cursor: move;
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  outline: 0;
+  pointer-events: auto;
+  padding: 15px;
+  right: 24px;
+  top: 136px;
+}
+
+.innerContent {
+  padding: 24px 32px;
+}
+
+.fullScreenCloseButton {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.HelpModalOverlay {
+  background: transparent;
+}
+
+.footer {
+  padding: 24px;
+  text-align: right;
+  background-color: #fff;
+}
+
+.footer > * {
+  margin: 0;
+}
+
+.title {
+  padding-top: 24px;
+  padding-left: 32px;
+  margin: 0;
+  font-size:210px;
+}

@@ -1,29 +1,11 @@
-
-
-// Assume  below emails
 import React from 'react'
 import ReactModal from 'react-modal'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { defineMessages, injectIntl } from 'react-intl'
-import styles from './Modal.css'
+import styles from './DraggableModal.css'
 
 ReactModal.setAppElement('body')
 
-const messages = defineMessages({
-  close: {
-    id: 'Modal.close',
-    description: 'Close button for Modal',
-    defaultMessage: 'Close',
-  },
-  needMoreHelp: {
-    id: 'Modal.needMoreHelp',
-    description: 'Text shown on bottom of Modal',
-    defaultMessage: 'Need more help?',
-  },
-})
-
-const iconClass = `icon ${styles.customIcon}`
 
 // properties that used to modal drag
 const dragMapping = {
@@ -77,9 +59,8 @@ const destroy = () => {
  * Will be called once modal opens
  * addListeners
  * @param {*} stats
- * @deprecated Use HelpModalWithButton component instead
  */
-function Modal({
+function DraggableModal({
   children,
   title,
   contentLabel,
@@ -93,9 +74,7 @@ function Modal({
   fullScreen,
   closeController,
   fullHeight,
-  intl,
   modalId,
-  needMoreHelpLink,
   contentWidth,
 }) {
   const innerContentClass = gutterless
@@ -149,11 +128,6 @@ function Modal({
         className={classNames(
           'ReactModal__InsideContent',
           styles.HelpModalInsideContent,
-          {
-            disableBoxShadow: false,
-            fullScreenInside: fullScreen,
-            fullHeight,
-          }
         )}
         style={{ maxWidth: contentWidth }}
         draggable
@@ -173,15 +147,7 @@ function Modal({
               normalCloseButton: !fullScreen,
             })}
           >
-              {/* Assume we have button component */}
-            <Button
-              icon={close}
-              onClick={onRequestClose}
-              key="closeModal"
-              showLabel={false}
-              label={intl.formatMessage(messages.close)}
-              kind="flat-lightGray"
-            />
+            <span onClick={closeController}>X</span>
           </div>
         </div>
         {fullScreen && <hr />}
@@ -191,28 +157,12 @@ function Modal({
         >
           {children}
         </div>
-        {needMoreHelpLink && (
-          <div className={classNames('ReactModal__Actions', styles.footer)}>
-            {/* asuume We have Link tag */}
-            <Link
-              to={needMoreHelpLink}
-              type="focus"
-              className="needMoreHelp"
-              target="_blank"
-            >
-              {intl.formatMessage(messages.needMoreHelp)}
-              <span className={iconClass}>
-                <Icon icon={ExportIcon} />
-              </span>
-            </Link>
-          </div>
-        )}
       </div>
     </ReactModal>
   )
 }
 
-Modal.defaultProps = {
+DraggableModal.defaultProps = {
   isOpen: false,
   onRequestClose: () => {},
   getAppElement: () => document.getElementById('root'),
@@ -231,11 +181,10 @@ Modal.defaultProps = {
   fullScreen: false,
   fullHeight: false,
   closeController: () => {},
-  needMoreHelpLink: null,
   contentWidth: '600px',
 }
 
-Modal.propTypes = {
+DraggableModal.propTypes = {
   /**
    * to display modal
    */
@@ -309,4 +258,4 @@ Modal.propTypes = {
   contentWidth: PropTypes.string,
 }
 
-export default injectIntl(Modal)
+export default DraggableModal
